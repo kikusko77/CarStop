@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "eloryks",
+      "Group": "Servers",
+      "Host": "eloryks-db-postgres",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "postgres",
+      "SSLMode": "prefer",
+      "PassFile": "/pgpassfile"
+    }
+  }
+}

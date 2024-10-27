@@ -1,0 +1,11 @@
+CREATE ROLE "eloryks-app" NOSUPERUSER LOGIN ENCRYPTED PASSWORD 'batman';
+CREATE DATABASE "eloryks-db";
+GRANT CONNECT ON DATABASE "eloryks-db" TO "eloryks-app";
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+\connect "eloryks-db";
+CREATE SCHEMA IF NOT EXISTS eloryks;
+GRANT USAGE ON SCHEMA eloryks TO "eloryks-app";
+DROP SCHEMA IF EXISTS public CASCADE;
+-- privileges configuration (also for subsequently-created tables)
+ALTER DEFAULT PRIVILEGES IN SCHEMA eloryks GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES, TRIGGER ON TABLES TO "eloryks-app";
+ALTER DEFAULT PRIVILEGES IN SCHEMA eloryks GRANT ALL PRIVILEGES ON SEQUENCES TO "eloryks-app";
