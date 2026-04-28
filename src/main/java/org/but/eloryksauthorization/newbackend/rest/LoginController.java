@@ -24,7 +24,7 @@ public class LoginController {
     @Autowired
     private PersonRepository personRepository;
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login", produces = "application/json")
     @Transactional(readOnly = true)
     public ResponseEntity<?> login() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
